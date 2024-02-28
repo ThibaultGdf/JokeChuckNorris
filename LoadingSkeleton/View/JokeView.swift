@@ -7,34 +7,18 @@
 
 import SwiftUI
 
-enum ResultState {
-	case loading
-	case failed(error: Error)
-	case success(content: [JokeResponse])
-}
-
 struct JokeView: View {
-	@ObservedObject var viewModel = JokeViewModel()
-		@State private var isLoading: Bool = false
+	@StateObject var viewModel = JokeViewModel()
+	@State private var isLoading: Bool = false
 	var body: some View {
 		VStack(spacing: 100) {
-			AsyncImage(url: URL(string: "https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png"), scale: 3)
+			ImageView()
 			if isLoading {
 				Text("LOADING")
 			} else {
-				if let joke = self.viewModel.joke {
-					Text(joke.value)
-						.multilineTextAlignment(.center)
-				} else {
-					Text("Cliquez sur le bouton pour obtenir une blague !")
-				}
+				JokeTextView(viewModel: viewModel)
 			}
-				
-			Button {
-				self.viewModel.getData()
-			} label: {
-				Text("Actualiser")
-			}.buttonStyle(.borderedProminent)
+			ButtonView(viewModel: viewModel)
 		}.padding()
 	}
 }
@@ -42,3 +26,7 @@ struct JokeView: View {
 #Preview {
 	JokeView()
 }
+
+
+
+
