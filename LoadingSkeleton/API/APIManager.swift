@@ -1,0 +1,29 @@
+//
+//  APIManager.swift
+//  LoadingSkeleton
+//
+//  Created by Thibault GODEFROY on 28/02/2024.
+//
+
+import Foundation
+
+class APIManager {
+	
+	func fetchData<T: Decodable>(model: T.Type) async throws -> T {
+		guard let url = URL(string: APIConstants.baseURL) else {
+			throw APIError.invalidPath
+		}
+		var urlRequest = URLRequest(url: url)
+		urlRequest.httpMethod = HTTPMethod.get.rawValue
+	
+		let (data, response) = try await URLSession.shared.data(for: urlRequest)
+		
+		guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+			throw APIError.decoding
+		}
+		let decoder = JSONDecoder()
+		let decoded = try decoder.decode(T.self, from: data)
+		
+		return decoded
+	}
+}
