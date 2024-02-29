@@ -22,5 +22,6 @@ struct ButtonView: View {
 			Text("Actualiser")
 		}
 		.buttonStyle(.borderedProminent)
+		.disabled(self.viewModel.isLoading)
 	}
 }

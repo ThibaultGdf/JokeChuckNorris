@@ -17,9 +17,9 @@ class JokeViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 
 	// MARK: Functions
+	@MainActor
 	func getData() {
 		self.isLoading = true
-		
 		Task {
 			do {
 				self.joke = try await self.apiManager.fetchData(model: JokeResponse.self)
@@ -27,7 +27,6 @@ class JokeViewModel: ObservableObject {
 				self.joke = nil
 				print(error.localizedDescription)
 			}
-			
 			self.isLoading = false
 		}
 	}

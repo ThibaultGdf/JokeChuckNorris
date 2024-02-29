@@ -22,6 +22,7 @@ struct JokeView: View {
 			} else {
 				JokeTextView(viewModel: viewModel)
 			}
+			Spacer()
 			ButtonView(viewModel: viewModel)
 		}.padding()
 	}
