@@ -1,6 +1,6 @@
 //
 //  APIManager.swift
-//  LoadingSkeleton
+//  Joke
 //
 //  Created by Thibault GODEFROY on 28/02/2024.
 //
