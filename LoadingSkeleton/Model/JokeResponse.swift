@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - JokeResponse
 struct JokeResponse: Decodable {
 	let categories: [String]
 	let createdAt: String
@@ -16,6 +17,7 @@ struct JokeResponse: Decodable {
 	let url: String
 	let value: String
 	
+	// MARK: CodingKeys
 	enum CodingKeys: String, CodingKey {
 		case categories
 		case createdAt = "created_at"

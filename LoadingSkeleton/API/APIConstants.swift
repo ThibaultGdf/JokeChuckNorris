@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - APIConstants
 struct APIConstants {
 	static let baseURL = "https://api.chucknorris.io/jokes/random"
 }

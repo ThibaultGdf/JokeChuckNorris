@@ -8,8 +8,13 @@
 import Foundation
 import SwiftUI
 
+// MARK: - JokeTextView
 struct JokeTextView: View {
+	
+	// MARK: Properties
 	@ObservedObject var viewModel: JokeViewModel
+	
+	// MARK: Body
 	var body: some View {
 		if let joke = self.viewModel.joke {
 			Text(joke.value)

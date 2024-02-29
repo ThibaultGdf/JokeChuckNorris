@@ -7,8 +7,10 @@
 
 import Foundation
 
+// MARK: - APIManager
 class APIManager {
 	
+	// MARK: Parsing API
 	func fetchData<T: Decodable>(model: T.Type) async throws -> T {
 		guard let url = URL(string: APIConstants.baseURL) else {
 			throw APIError.invalidPath

@@ -7,14 +7,18 @@
 
 import SwiftUI
 
+// MARK: - JokeView
 struct JokeView: View {
+	
+	// MARK: Properties
 	@StateObject var viewModel = JokeViewModel()
-	@State private var isLoading: Bool = false
+	
+	// MARK: Body
 	var body: some View {
 		VStack(spacing: 100) {
 			ImageView()
-			if isLoading {
-				Text("LOADING")
+			if self.viewModel.isLoading {
+				ProgressView()
 			} else {
 				JokeTextView(viewModel: viewModel)
 			}
@@ -23,6 +27,7 @@ struct JokeView: View {
 	}
 }
 
+// MARK: - Preview
 #Preview {
 	JokeView()
 }

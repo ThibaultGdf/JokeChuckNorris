@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - APIError
 enum APIError: Error {
 	case invalidPath
 	case decoding

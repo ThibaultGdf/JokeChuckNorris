@@ -8,14 +8,19 @@
 import Foundation
 import SwiftUI
 
+// MARK: - ButtonView
 struct ButtonView: View {
+	
+	// MARK: Properties
 	@ObservedObject var viewModel: JokeViewModel
 	
+	// MARK: Body
 	var body: some View {
 		Button {
 			self.viewModel.getData()
 		} label: {
 			Text("Actualiser")
-		}.buttonStyle(.borderedProminent)
+		}
+		.buttonStyle(.borderedProminent)
 	}
 }
